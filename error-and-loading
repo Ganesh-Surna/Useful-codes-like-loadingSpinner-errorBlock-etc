@@ -1,4 +1,51 @@
 ================= (1) Error Component =======================
+export default function ErrorBlock({ title, message }) {
+  return (
+    <div className="error-block">
+      <div className="error-block-icon">!</div>
+      <div className="error-block-text">
+        <h2>{title}</h2>
+        <p>{message}</p>
+      </div>
+    </div>
+  );
+}
+.............. CSS .................
+.error-block {
+  background-color: #f0d9e5;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 4px;
+  color: #890b35;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  text-align: left;
+}
+
+.error-block-icon {
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  color: #fff;
+  background-color: #890b35;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-block h2 {
+  color: inherit;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.error-block p {
+  margin: 0;
+}
+
+=================== (2) Loading Component ===================
 export default function LoadingIndicator() {
   return (
     <div className="lds-ring">
@@ -9,7 +56,6 @@ export default function LoadingIndicator() {
     </div>
   );
 }
-
 ................ CSS .................
 .lds-ring {
   display: inline-block;
@@ -47,52 +93,4 @@ export default function LoadingIndicator() {
   100% {
     transform: rotate(360deg);
   }
-}
-
-=================== (2) Loading Component ===================
-export default function ErrorBlock({ title, message }) {
-  return (
-    <div className="error-block">
-      <div className="error-block-icon">!</div>
-      <div className="error-block-text">
-        <h2>{title}</h2>
-        <p>{message}</p>
-      </div>
-    </div>
-  );
-}
-
-.............. CSS .................
-.error-block {
-  background-color: #f0d9e5;
-  margin: 1rem 0;
-  padding: 1rem;
-  border-radius: 4px;
-  color: #890b35;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  text-align: left;
-}
-
-.error-block-icon {
-  font-size: 2rem;
-  width: 3rem;
-  height: 3rem;
-  color: #fff;
-  background-color: #890b35;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.error-block h2 {
-  color: inherit;
-  font-size: 1.25rem;
-  margin: 0;
-}
-
-.error-block p {
-  margin: 0;
 }
