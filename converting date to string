@@ -1,0 +1,5 @@
+const formattedDate = new Date(2023,12,21).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
