@@ -4,4 +4,4 @@ const formattedDate = new Date(2023,12,21).toLocaleDateString('en-US', {
     year: 'numeric',
   });
 
-=====Must be in this Format   :  new Date(YYYY,MM,DD)==========
+=====Must be in this Format   :  new Date(YYYY,MM,DD)     or    new Date(YYYY-MM-DD)==========
