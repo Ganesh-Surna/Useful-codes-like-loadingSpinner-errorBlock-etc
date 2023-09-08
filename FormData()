@@ -1,0 +1,25 @@
+============ collecting FormData() ================ Note: Fields should have "name" attribute
+
+export default function App() {
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    const form = new FormData(event.target);
+    console.log(form);
+    const formData = Object.fromEntries(form);
+    console.log(formData);
+  };
+
+  return (
+    <div className="App">
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="firstname" /> 
+        <input type="text" name="lastname" />
+        <input type="email" name="email" />
+        <input type="password" name="password" />
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+}
