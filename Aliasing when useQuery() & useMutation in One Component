@@ -1,0 +1,19 @@
+==================== Aliasing when both useQuery() & useMutation() are in one component ==================
+
+const { data, isPending, isError, error }=useQuery({
+    queryKey: ["events", {id: params.id}],
+    queryFn: ({signal})=>fetchEventDetails({signal, id:params.id}),
+    staleTime: 5000,
+  })
+
+  const { mutate, isPending: isDeletionPending, isError: isDeletionError, error: deletionError } = useMutation({
+        mutationFn: deleteEvent,
+        onSuccess: ()=>{
+          queryClientObj.invalidateQueries({
+            queryKey: ["events"],
+            refetchType: "none",
+          });
+          // window.alert("Deleted successfully!");
+          navigate("/events");
+        }
+  });
