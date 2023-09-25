@@ -1,0 +1,27 @@
+import React, { useState } from 'react';
+
+function MyComponent() {
+  // Get today's date and format it as "YYYY-MM-DD"
+  const today = new Date().toISOString().slice(0, 10);
+
+  const [selectedDate, setSelectedDate] = useState(today);
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  return (
+    <div>
+      <label htmlFor="dateInput">Select a date:</label>
+      <input
+        type="date"
+        id="dateInput"
+        name="dateInput"
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
+    </div>
+  );
+}
+
+export default MyComponent;
