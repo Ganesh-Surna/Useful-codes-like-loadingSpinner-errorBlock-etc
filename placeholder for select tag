@@ -1,0 +1,14 @@
+<select
+    value={style}
+    defaultValue="Style1"
+    onBlur={styleHandleBlur}
+    onChange={styleHandleChange}
+    id="style"
+    name="style"
+    placeholder={"Select a style"} ==================================>Does not work for select
+>
+    <option value="Style1">Style1</option>
+    <option value="" disabled hidden>Select an option</option> =====================> this is the disabled and hidden option , works as placeholder
+    <option value="Style2">Style2</option>
+    <option value="Style3">Style3</option>
+</select>
