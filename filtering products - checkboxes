@@ -10,9 +10,9 @@ const products = [
 
 const ProductList = () => {
   const [priceFilters, setPriceFilters] = useState({
-    under10: false,
-    between10And20: false,
-    between20And30: false,
+    under10: false,    =====================>the input should have name value same as this property
+    between10And20: false, =================>the input should have name value same as this property
+    between20And30: false, =================>the input should have name value same as this property
   });
 
   const handleCheckboxChange = (event) => {
