@@ -4,6 +4,8 @@
 
 
 ================2. USING REF TO PERFORM SAME FUNCTIONALITY OF THE INPUT BY A BUTTON =======================
+const fileInputRef=useRef();
+
 <input style={{display:"none"}} type="file" multiple ref={fileInputRef} />
 <button onClick={()=>fileInputRef.current.click()}>Pick Files</button>
 <button>Upload File</button>
