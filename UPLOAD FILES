@@ -5,6 +5,16 @@ function handleSelectFile(event){
     setSelectedFile(event.target.files[0]);
 }
 
+function handleUploadFiles(){
+    if(!file){
+      setMsg("No file Selected!");
+      return;
+    }
+
+    const fd = new FormData();
+    fd.append("file", file);
+  }
+
 <input type="file" onChange={handleSelectFile}  />
 <button>Upload File</button>
 
@@ -15,6 +25,18 @@ const [selectedFiles, setSelectedFiles]= useState(null);
 function handleSelectFiles(event){
     setSelectedFile(event.target.files);
 }
+
+function handleUploadFiles(){
+    if(!files){
+      setMsg("No file Selected!");
+      return;
+    }
+
+    const fd = new FormData();
+   for(let i=0; i<=files.length; i++){
+        fd.append(`files${i+1}`, files[i]);
+   }
+  }
 
 <input type="file" multiple onChange={handleSelectFiles}  />
 <button>Upload File</button>
