@@ -1,0 +1,9 @@
+=============== 1. UPLOAD MULTIPLE FILES =====================
+<input type="file" multiple />
+<button>Upload File</button>
+
+
+================2. USING REF TO PERFORM SAME FUNCTIONALITY OF THE INPUT BY A BUTTON =======================
+<input style={{display:"none"}} type="file" multiple ref={fileInputRef} />
+<button onClick={()=>fileInputRef.current.click()}>Pick Files</button>
+<button>Upload File</button>
