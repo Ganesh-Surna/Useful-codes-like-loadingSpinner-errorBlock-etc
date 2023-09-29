@@ -1,5 +1,6 @@
-============== 2. UPLOAD A SINGLE FILE ==================
+============== 1. UPLOAD A SINGLE FILE ==================
 const [selectedFile, setSelectedFile]= useState(null);
+const [msg, setMsg]=useState();
 
 function handleSelectFile(event){
     setSelectedFile(event.target.files[0]);
@@ -21,6 +22,8 @@ function handleUploadFiles(){
 
 =============== 2. UPLOAD MULTIPLE FILES =====================
 const [selectedFiles, setSelectedFiles]= useState(null);
+const [msg, setMsg]=useState();
+const [progress, setProgress]= useState({ isStarted: false, percent: 0 });
 
 function handleSelectFiles(event){
     setSelectedFile(event.target.files);
@@ -33,13 +36,40 @@ function handleUploadFiles(){
     }
 
     const fd = new FormData();
-   for(let i=0; i<=selectedFiles.length; i++){
+    for(let i=0; i<=selectedFiles.length; i++){
         fd.append(`files${i+1}`, selectedFiles[i]);
-   }
+    }
+
+    setMsg("Uploading...");
+    setProgress((prev)=>{
+      return {...prev, started: true};
+    });
+
+    axios.post("https://food-app-a6f82-default-rtdb.firebaseio.com/.json", fd, {
+      headers:{
+        "Custom-Header": "value",
+      },
+      onUploadProgress: (progressEvent)=>{
+        setProgress((prev)=>{
+          return {...prev, percent: progressEvent.progress*100};
+        })
+      },
+    })
+    .then((res)=>{
+      setMsg("Upload successful!");
+      console.log(res.data);
+    })
+    .catch((err)=>{
+      setMsg("Upload failed!");
+      console.error(err);
+    })
+    
   }
 
 <input type="file" multiple onChange={handleSelectFiles}  />
 <button>Upload File</button>
+{progress.isStarted && <progress max="100" value={progress.percent}/>}
+{msg && <span>{msg}</span>}
 
 
 ================3. USING REF TO PERFORM SAME FUNCTIONALITY OF THE INPUT BY A BUTTON =======================
