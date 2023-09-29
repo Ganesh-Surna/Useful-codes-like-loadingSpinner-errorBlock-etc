@@ -12,7 +12,7 @@ function handleUploadFiles(){
     }
 
     const fd = new FormData();
-    fd.append("file", file);
+    fd.append("file", selectedFile);
   }
 
 <input type="file" onChange={handleSelectFile}  />
@@ -34,7 +34,7 @@ function handleUploadFiles(){
 
     const fd = new FormData();
    for(let i=0; i<=files.length; i++){
-        fd.append(`files${i+1}`, files[i]);
+        fd.append(`files${i+1}`, selectedFiles[i]);
    }
   }
 
