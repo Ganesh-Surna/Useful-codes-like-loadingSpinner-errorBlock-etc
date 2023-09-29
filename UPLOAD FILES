@@ -6,7 +6,7 @@ function handleSelectFile(event){
 }
 
 function handleUploadFiles(){
-    if(!file){
+    if(!selectedFile){
       setMsg("No file Selected!");
       return;
     }
@@ -27,13 +27,13 @@ function handleSelectFiles(event){
 }
 
 function handleUploadFiles(){
-    if(!files){
+    if(!selectedFiles){
       setMsg("No file Selected!");
       return;
     }
 
     const fd = new FormData();
-   for(let i=0; i<=files.length; i++){
+   for(let i=0; i<=selectedFiles.length; i++){
         fd.append(`files${i+1}`, selectedFiles[i]);
    }
   }
