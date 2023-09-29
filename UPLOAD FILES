@@ -1,9 +1,26 @@
-=============== 1. UPLOAD MULTIPLE FILES =====================
-<input type="file" multiple />
+============== 2. UPLOAD A SINGLE FILE ==================
+const [selectedFile, setSelectedFile]= useState(null);
+
+function handleSelectFile(event){
+    setSelectedFile(event.target.files[0]);
+}
+
+<input type="file" onChange={handleSelectFile}  />
 <button>Upload File</button>
 
 
-================2. USING REF TO PERFORM SAME FUNCTIONALITY OF THE INPUT BY A BUTTON =======================
+=============== 2. UPLOAD MULTIPLE FILES =====================
+const [selectedFiles, setSelectedFiles]= useState(null);
+
+function handleSelectFiles(event){
+    setSelectedFile(event.target.files);
+}
+
+<input type="file" multiple onChange={handleSelectFiles}  />
+<button>Upload File</button>
+
+
+================3. USING REF TO PERFORM SAME FUNCTIONALITY OF THE INPUT BY A BUTTON =======================
 const fileInputRef=useRef();
 
 <input style={{display:"none"}} type="file" multiple ref={fileInputRef} />
