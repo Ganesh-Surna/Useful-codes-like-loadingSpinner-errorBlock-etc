@@ -1,0 +1,5 @@
+const handleRemoveFun = useCallback( function handleRemoveFun(){
+     ...... 
+  }, 
+  []
+);
