@@ -1,0 +1,55 @@
+=============== IN Modal.jsx ==================
+
+import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { createPortal } from 'react-dom';
+
+const Modal = forwardRef(function Modal({ children }, ref) {
+  const dialog = useRef();
+
+  useImperativeHandle(ref, () => {
+    return {
+      open: () => {
+        dialog.current.showModal();
+      },
+      close: () => {
+        dialog.current.close();
+      },
+    };
+  });
+
+  return createPortal(
+    <dialog className="modal" ref={dialog}>
+      {children}
+    </dialog>,
+    document.getElementById('modal')
+ );
+});
+
+export default Modal;
+
+
+===================== IN Other Components using the close and open methods of the modal ===============
+
+
+function App() {
+  const modal = useRef();
+  const selectedPlace = useRef();
+
+  function handleStartRemovePlace(id) {
+    modal.current.open();
+    selectedPlace.current = id;
+  }
+
+  function handleStopRemovePlace() {
+    modal.current.close();
+  }
+
+
+return (
+    <>
+      <Modal ref={modal}>
+        <DeleteConfirmation
+          onCancel={handleStopRemovePlace}
+          onConfirm={handleRemovePlace}
+        />
+      </Modal>
