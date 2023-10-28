@@ -1,0 +1,3 @@
+Whenever the key changes the component will be re-created.
+
+<Header key={activeQuestionIndex} />
